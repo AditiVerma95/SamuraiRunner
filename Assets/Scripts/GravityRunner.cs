@@ -18,7 +18,7 @@ public class GravityRunner : MonoBehaviour {
     
     //ui
     public GameObject gameStartUI;
-    public GameObject gameFinishUI;
+    public GameObject gameOverUI;
     
     //animator
     public Animator animator;
@@ -42,7 +42,7 @@ public class GravityRunner : MonoBehaviour {
 
         if (transform.position.y >= -16f) {
             Destroy(gameObject);
-            gameFinishUI.SetActive(true);
+            gameOverUI.SetActive(true);
         }
         // Start the game on D key
         if (Input.GetKeyDown(KeyCode.D)) {
@@ -62,9 +62,10 @@ public class GravityRunner : MonoBehaviour {
         isGrounded = groundHit != null;
 
         // Gravity flip and jump on Space key only when grounded
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             FlipGravity();
         }
+        
 
         // Handle animations
         if (isGrounded) {

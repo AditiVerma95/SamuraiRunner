@@ -1,16 +1,32 @@
+using System;
+using System.Timers;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyShooting : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+public class EnemyShooting : MonoBehaviour {
+   public GameObject bullet;
+   private GameObject player;
+   public Transform bulletTransform;
+   private float timer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   private void Start() {
+      player = GameObject.FindWithTag("Player");
+   }
+
+   private void Update() {
+      float distance = Vector2.Distance(transform.position, player.transform.position);
+       
+      if(distance < 5f){
+         timer += Time.deltaTime;
+         if (timer > 2) {
+            timer = 0;
+            Shoot();
+         }
+      }
+   }
+
+   public void Shoot() {
+      Instantiate(bullet, bulletTransform.position, quaternion.identity);
+   }
 }
