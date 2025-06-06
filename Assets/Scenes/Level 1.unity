@@ -322,8 +322,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press D
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cc05fe6dca36ec94d9fafd18458e8bf1, type: 2}
+  m_sharedMaterial: {fileID: -2705527847260830646, guid: cc05fe6dca36ec94d9fafd18458e8bf1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -347,8 +347,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.03
-  m_fontSizeBase: 36.03
+  m_fontSize: 28.11
+  m_fontSizeBase: 28.11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2924,6 +2924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followCamera: {fileID: 1314929351}
+  particleEffect: {fileID: 1021931746}
   speed: 0.2
 --- !u!1 &829116393
 GameObject:
@@ -3299,8 +3300,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cc05fe6dca36ec94d9fafd18458e8bf1, type: 2}
+  m_sharedMaterial: {fileID: -2705527847260830646, guid: cc05fe6dca36ec94d9fafd18458e8bf1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3324,8 +3325,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.03
-  m_fontSizeBase: 36.03
+  m_fontSize: 30.9
+  m_fontSizeBase: 30.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8571,6 +8572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followCamera: {fileID: 1314929351}
+  particleEffect: {fileID: 0}
   speed: 0.8
 --- !u!64 &1663716123
 MeshCollider:
@@ -9255,7 +9257,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAYER DIED
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cc05fe6dca36ec94d9fafd18458e8bf1, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -9280,8 +9282,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.13
-  m_fontSizeBase: 37.13
+  m_fontSize: 29.9
+  m_fontSizeBase: 29.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9321,7 +9323,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2119326885
@@ -9351,7 +9353,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   gameStartUI: {fileID: 142771856}
-  gameFinishUI: {fileID: 908453780}
+  gameOverUI: {fileID: 0}
   animator: {fileID: 0}
   audioManager: {fileID: 91017528}
 --- !u!1 &1933288125035663006

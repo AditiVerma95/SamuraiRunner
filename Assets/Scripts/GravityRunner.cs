@@ -40,7 +40,7 @@ public class GravityRunner : MonoBehaviour {
     //update method
     void Update() {
 
-        if (transform.position.y >= -16f) {
+        if (transform.position.y >= -14f) {
             Destroy(gameObject);
             gameOverUI.SetActive(true);
         }
