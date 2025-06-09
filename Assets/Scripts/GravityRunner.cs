@@ -1,19 +1,22 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GravityRunner : MonoBehaviour {
     public static GravityRunner Instance;
-    public float speed = 5f;
+    private float speed = 3f;
     public float groundCheckRadius = 0.2f;
     public Transform groundCheck;
     public LayerMask ground;
     
-
+    private bool isFrozen = false;
+    private bool isFreezingCoroutineRunning = false;
+    
     private Rigidbody2D rb;
     private bool isGrounded;
-    private bool isJumping;
     private bool gravityInverted = false;
     
     //ui
@@ -43,16 +46,16 @@ public class GravityRunner : MonoBehaviour {
         if (transform.position.y >= -14f) {
             Destroy(gameObject);
             gameOverUI.SetActive(true);
+            GameMechanic.Instance.SceneReload();
         }
         // Start the game on D key
         if (Input.GetKeyDown(KeyCode.D)) {
             gameStartUI.SetActive(false);
             isRunning = true;
             audioManager.PlayRunningAudio();
-            speed = 3f;
         }
-
         // Move the player if game has started
+        // Move the player if game has started and not frozen
         if (isRunning) {
             rb.linearVelocity = new Vector2(speed, rb.linearVelocity.y);
         }
@@ -69,6 +72,7 @@ public class GravityRunner : MonoBehaviour {
 
         // Handle animations
         if (isGrounded) {
+            Debug.Log("grounded");
             animator.SetBool("isRunning", isRunning);
             animator.SetBool("isJumping", false);
         } else {
@@ -78,6 +82,25 @@ public class GravityRunner : MonoBehaviour {
         
     }
 
+    public void Freeze() {
+        speed = 0f;
+        isRunning = false;
+        animator.SetBool("isRunning", false);
+    }
+
+    public void UnFreeze() {
+        speed = 3f;
+        isRunning = true;
+        animator.SetBool("isRunning", true);
+    }
+
+
+    public IEnumerator FreezeCoroutine() {
+        Freeze();
+        yield return new WaitForSeconds(3f);
+        UnFreeze();
+    }
+    
     void FlipGravity() {
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         gravityInverted = !gravityInverted;
