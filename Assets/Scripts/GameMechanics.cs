@@ -3,11 +3,11 @@ using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameMechanic : MonoBehaviour
+public class GameMechanics : MonoBehaviour
 {
     public GameObject gameOverUI;
     public GameObject gameFinishUI;
-    public static GameMechanic Instance;
+    public static GameMechanics Instance;
     public bool playerDead;
     
     private void Awake() {
@@ -17,7 +17,9 @@ public class GameMechanic : MonoBehaviour
     public void SceneReload() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
+    public void BackButton() {
+        SceneManager.LoadScene(0);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Finish"))

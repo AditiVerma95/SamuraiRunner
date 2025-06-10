@@ -7,13 +7,10 @@ using UnityEngine.InputSystem;
 
 public class GravityRunner : MonoBehaviour {
     public static GravityRunner Instance;
-    private float speed = 3f;
+    private float speed = 0f;
     public float groundCheckRadius = 0.2f;
     public Transform groundCheck;
     public LayerMask ground;
-    
-    private bool isFrozen = false;
-    private bool isFreezingCoroutineRunning = false;
     
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -46,13 +43,14 @@ public class GravityRunner : MonoBehaviour {
         if (transform.position.y >= -14f) {
             Destroy(gameObject);
             gameOverUI.SetActive(true);
-            GameMechanic.Instance.SceneReload();
+            GameMechanics.Instance.SceneReload();
         }
         // Start the game on D key
         if (Input.GetKeyDown(KeyCode.D)) {
             gameStartUI.SetActive(false);
             isRunning = true;
             audioManager.PlayRunningAudio();
+            speed = 3f;
         }
         // Move the player if game has started
         // Move the player if game has started and not frozen

@@ -15,7 +15,12 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private GameObject levelSelectPanel;
 
     private GameObject currentPanel;
-    
+    public static MainMenuManager Instance;
+
+    private void Awake() {
+        Instance = this;
+    }
+
     private void Start() {
         stack = new Stack<GameObject>();
         currentPanel = startPanel;

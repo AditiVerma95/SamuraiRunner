@@ -27,7 +27,7 @@ public class EnemyBullet : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             Debug.Log("player collided");
-            GameMechanic.Instance.gameOverUI.SetActive(true);
+            GameMechanics.Instance.gameOverUI.SetActive(true);
             Destroy(other.gameObject);
             Destroy(gameObject);
             
