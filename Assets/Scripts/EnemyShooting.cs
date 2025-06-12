@@ -9,12 +9,15 @@ public class EnemyShooting : MonoBehaviour {
    private GameObject player;
    public Transform bulletTransform;
    private float timer;
-
+   
    private void Start() {
       player = GameObject.FindWithTag("Player");
    }
 
    private void Update() {
+      if (player == null) {
+         return;
+      }
       float distance = Vector2.Distance(transform.position, player.transform.position);
        
       if(distance < 5f){
@@ -24,9 +27,10 @@ public class EnemyShooting : MonoBehaviour {
             Shoot();
          }
       }
+      
    }
 
    public void Shoot() {
-      Instantiate(bullet, bulletTransform.position, quaternion.identity);
+      Instantiate(bullet, bulletTransform.position, Quaternion.identity);
    }
 }

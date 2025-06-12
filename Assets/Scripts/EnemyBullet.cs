@@ -30,8 +30,7 @@ public class EnemyBullet : MonoBehaviour {
             GameMechanics.Instance.gameOverUI.SetActive(true);
             Destroy(other.gameObject);
             Destroy(gameObject);
-            
-            
+            GameMechanics.Instance.SceneReload();
         }
     }
 }

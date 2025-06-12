@@ -32,7 +32,6 @@ public class GravityRunner : MonoBehaviour {
     }
     //start
     void Start() {
-        
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
     }
@@ -41,9 +40,9 @@ public class GravityRunner : MonoBehaviour {
     void Update() {
 
         if (transform.position.y >= -14f) {
-            Destroy(gameObject);
             gameOverUI.SetActive(true);
             GameMechanics.Instance.SceneReload();
+            Destroy(gameObject);
         }
         // Start the game on D key
         if (Input.GetKeyDown(KeyCode.D)) {
