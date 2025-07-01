@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GravityRunner : MonoBehaviour {
     public static GravityRunner Instance;
@@ -26,6 +27,10 @@ public class GravityRunner : MonoBehaviour {
     
     // Audio Manager 
     [SerializeField] private AudioManager audioManager;
+    
+    // Buttons
+    [SerializeField] private Button dButton;
+    [SerializeField] private Button spaceButton;
 
     private void Awake() {
         Instance = this;
@@ -39,11 +44,12 @@ public class GravityRunner : MonoBehaviour {
     //update method
     void Update() {
 
-        if (transform.position.y >= -14f) {
+        if (transform.position.y >= -14f && transform.position.y >= -28f) {
             gameOverUI.SetActive(true);
             GameMechanics.Instance.SceneReload();
             Destroy(gameObject);
         }
+        
         // Start the game on D key
         if (Input.GetKeyDown(KeyCode.D)) {
             gameStartUI.SetActive(false);
@@ -91,14 +97,22 @@ public class GravityRunner : MonoBehaviour {
         animator.SetBool("isRunning", true);
     }
 
-
+    public void EmulateD() {
+        gameStartUI.SetActive(false);
+        isRunning = true;
+        audioManager.PlayRunningAudio();
+        speed = 3f;
+        dButton.gameObject.SetActive(false);
+        spaceButton.gameObject.SetActive(true);
+    }
+    
     public IEnumerator FreezeCoroutine() {
         Freeze();
         yield return new WaitForSeconds(3f);
         UnFreeze();
     }
     
-    void FlipGravity() {
+    public void FlipGravity() {
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         gravityInverted = !gravityInverted;
         rb.gravityScale *= -1;
